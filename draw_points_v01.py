@@ -1,3 +1,8 @@
+"""
+This code had its origin here:
+https://pythonspot.com/matplotlib-scatterplot/
+https://matplotlib.org/gallery/shapes_and_collections/scatter.html#sphx-glr-gallery-shapes-and-collections-scatter-py
+"""
 import numpy as np
 import matplotlib.pyplot as plt
 import sys
