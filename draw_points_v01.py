@@ -1,4 +1,5 @@
 """
+# This draws/plots data on a window.
 This code had its origin here:
 https://pythonspot.com/matplotlib-scatterplot/
 https://matplotlib.org/gallery/shapes_and_collections/scatter.html#sphx-glr-gallery-shapes-and-collections-scatter-py
