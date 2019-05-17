@@ -16,6 +16,9 @@ class Datapoint:
         self.y = -10
         self.answer = -10
 
+    def __repr__(self):
+        return "(x, y: {}, {}) bias: {}, answer: {}".format(self.x, self.y, self.bias, self.answer)
+
     def create_datapoint(self, x, y, answer):
         self.x = x
         self.y = y
@@ -62,7 +65,7 @@ class Trainer():
 
     def _get_slope(self):
         x = 0
-        print("slope of the line: {}".format(self.slope_of_the_line))
+        # print("slope of the line: {}".format(self.slope_of_the_line))
         y = self.slope_of_the_line(x)
         x1 = 10
         y1 = self.slope_of_the_line(x1)
@@ -72,8 +75,8 @@ class Trainer():
 
     def generate_data(self, bias):
         # generate random numbers between -1.0 and 1.0
-        print("in trainer.py -> Trainer.generate_data()")
-        print("slope of the line: {}".format(self._get_slope()))
+        # print("in trainer.py -> Trainer.generate_data()")
+        # print("slope of the line: {}".format(self._get_slope()))
         new_data = []
         for i in range(self.number_of_datapoints):
             x = self._generate_data_point()
@@ -88,8 +91,8 @@ class Trainer():
     # These two defs used to be in Datapoint.
 
     def _activate(self, x, y):
-        print("=======================")
-        print("slope of the line in trainer.py Trainer._activate: {}".format(self._get_slope()))
+        # print("=======================")
+        # print("slope of the line in trainer.py Trainer._activate: {}".format(self._get_slope()))
         y1 = self._f(x)
         if y < y1:
             return -1
@@ -98,6 +101,20 @@ class Trainer():
     def _f(self, x):
         """The function for the lope of the line."""
         return self.slope_of_the_line(x)
+
+    # --------------------------------------------------
+
+    def get_input_data(self):
+        input_data = []
+        for datapoint in self.data:
+            x = datapoint.x
+            y = datapoint.y
+            bias = datapoint.bias
+            answer = datapoint.answer
+            guess = -100
+            row = [(x, y, bias, answer, guess)]
+            input_data.append(row)
+        return input_data
 
     # --------------------------------------------------
 
@@ -126,6 +143,8 @@ class Trainer():
             new_datapoint = Datapoint(bias)
             new_datapoint.parse_as_fileline(aline)
             new_data.append(new_datapoint)
+        # since we're reading this from file, we need to set the global bias.
+        self.bias = new_data[0].bias
         self.data = new_data
 
     def write_datapoints_to_file(self, filepath):
@@ -140,8 +159,8 @@ class Trainer():
                 f.write(datapoint.get_as_fileline())
         # sys.exit("write_datapoints_to_file. sys.exit()")
 
-    def file_line(self):
-        return "{} {} {} {}\n".format(self.inputs[0], self.inputs[1], self.inputs[2], self.answer)
+    # def file_line(self):
+    #     return "{} {} {} {}\n".format(self.inputs[0], self.inputs[1], self.inputs[2], self.answer)
 
     def debug_print(self):
         print("Printing {} records from class Trainer.".format(len(self.data)))
@@ -162,8 +181,8 @@ class Trainer():
 def main():
     # print("x,y: {},{} answer: {}, f(x): {}".format(x, y, answer, (2*x)+1))
     filepath = "datapoints.txt"
-    screenwidth = 400
-    screenheight = 400
+    # screenwidth = 400
+    # screenheight = 400
     bias = 1
     number_of_items_in_array = 20
     metadata = []
