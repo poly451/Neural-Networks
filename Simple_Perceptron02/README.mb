@@ -1,0 +1,10 @@
+This actually works! FirstPerceptron.py is the main module. 
+Download it, run that file, and you'll see the commands you can use.
+Bascially, it generates data (training and test sets), allows
+you to change the slop of the line (datapoints are classified 
+as either above or below the line), view the slope of the line, etc.
+
+Train the perceptron on the training dataset (generate the data first) and 
+then test it to see how accuarate it is.
+
+That's it! This is the hello world of neural net programs. :-)
